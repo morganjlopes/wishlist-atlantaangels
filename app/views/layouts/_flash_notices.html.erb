@@ -1,0 +1,12 @@
+
+<% if notice.present? %>
+  <div class='p-3 text-center bg-success text-white notice'>
+    <p class="mb-0"><%= notice %></p>
+  </div>
+<% end %>
+
+<% if alert.present? %>
+  <div class='p-3 text-center bg-danger text-white alert'>
+    <p class="mb-0"><%= alert %></p>
+  </div>
+<% end %>

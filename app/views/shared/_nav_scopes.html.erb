@@ -1,0 +1,10 @@
+<% if defined?(items_hash) && items_hash.present? %>
+  <ul class="nav nav-underline">
+    <% items_hash.each do |label, scope| %>
+      <% active = params[:scope] == scope.to_s || (scope == nil && params[:scope].nil?) %>
+      <li class="nav-item">
+        <%= link_to label, url_for(scope: scope), class: "nav-link #{'active' if active}" %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,34 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Started at</th>
+      <th>Device</th>
+      <th>OS</th>
+      <th>Browser</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @visits.each do |visit| %>
+      <tr>
+        <td>
+          <%= visit.id %>
+        </td>
+        <td>
+          <%= format_date(visit.started_at) %>
+        </td>
+        <td>
+          <%= visit.device_type %>
+        </td>
+        <td>
+          <%= visit.os %>
+        </td>
+        <td>
+          <%= visit.browser %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%== pagy_bootstrap_nav(@pagy) if defined?(@pagy) && @pagy.pages > 1 %>

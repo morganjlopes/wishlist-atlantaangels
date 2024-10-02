@@ -1,0 +1,10 @@
+<form action='<%= url_for() %>'>
+  <% if params[:scope].present? %>
+    <input type="hidden" name="scope" value="<%= params[:scope] %>">
+  <% end %>
+  
+  <div class='input-group'>
+    <input name='q' value='<%= params[:q] %>' class="form-control" type="search" placeholder="" aria-label="Search">
+    <button class="btn btn-outline-secondary" type="submit"><%= icon('search') %> Search</button>
+  </div>
+</form>

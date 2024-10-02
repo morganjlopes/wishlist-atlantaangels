@@ -1,0 +1,20 @@
+<% if users.empty? %>
+  <%= no_records_html %>
+<% else %>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td>
+            <%= user.email %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

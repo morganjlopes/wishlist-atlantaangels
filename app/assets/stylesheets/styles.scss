@@ -1,0 +1,25 @@
+:root {
+  --bs-primary: #5500ff!important;
+  --bs-btn-border-color: #5500ff!important;
+  --bs-btn-bg: #5500ff!important;
+  --bs-btn-color: #5500ff!important;
+}
+
+nav.navbar, .nav {
+  padding: 0px;
+  .nav-link {
+    border-bottom: 2px solid transparent;
+    color: #666;
+    &.active {
+      color: var(--bs-primary)!important;
+      border-bottom-color: var(--bs-primary);
+      font-weight: 500;
+    }
+  }
+}
+
+nav.navbar {
+  .nav-link {
+    padding: 15px 15px!important;
+  }
+}
