@@ -20,42 +20,45 @@
               <%= link_to "Home", root_path, class: "#{'active' if params[:controller] == 'admin/pages'} nav-link" %>
             </li>
             <li class='nav-item'>
-              <%= link_to "Visits", admin_ahoy_visits_path, class: "#{'active' if params[:controller] == 'admin/ahoy_visits'} nav-link" %>
+              <%= link_to "Events", admin_events_path, class: "#{'active' if params[:controller] == 'admin/events'} nav-link" %>
             </li>
-            <li class='nav-item'>
-              <%= link_to "Events", admin_ahoy_events_path, class: "#{'active' if params[:controller] == 'admin/ahoy_events'} nav-link" %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                System
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to "Visits", admin_ahoy_visits_path, class: "#{'active' if params[:controller] == 'admin/ahoy_visits'} dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to "Events", admin_ahoy_events_path, class: "#{'active' if params[:controller] == 'admin/ahoy_events'} dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to "Users", admin_users_path, class: "#{'active' if params[:controller] == 'admin/users'} dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to "Settings", admin_settings_path, class: "#{'active' if params[:controller] == 'admin/settings'} dropdown-item" %>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
             </li>
-            <li class='nav-item'>
-              <%= link_to "Users", admin_users_path, class: "#{'active' if params[:controller] == 'admin/users'} nav-link" %>
-            </li>
-            <li class='nav-item'>
-              <%= link_to "Settings", admin_settings_path, class: "#{'active' if params[:controller] == 'admin/settings'} nav-link" %>
-            </li>
-            <% if false %>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            <% end %>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary" type="submit">Search</button>
-          </form>
         </div>
       </div>
     </nav>
 
     <div class='container'>
       <section class='py-4'>
-        <h1><%= @page_title %></h1>
+        <div class='row'>
+          <div class='col-sm-7'>
+            <h1><%= @page_title %></h1>
+          </div>
+
+          <div class='col-sm-5 text-end'>
+            <%= yield :page_actions %>
+          </div>
+        </div>
       </section>
 
       <%= yield %>
