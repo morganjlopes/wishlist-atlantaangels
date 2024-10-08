@@ -80,7 +80,9 @@ class FamiliesController < ApplicationController
         :wrap_gifts,
         :household_caregivers_count,
         :household_children_count,
-        :slug
+        :slug,
+        :is_attending,
+        :attendance_selection
       )
     end
 end

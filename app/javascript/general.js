@@ -20,4 +20,13 @@ $(document).on('turbo:load', function() {
     regexp = new RegExp($(this).data('id'), 'g');
     $(this).before($(this).data('fields').replace(regexp, time));
   });
+
+  $('#family_is_attending').on('change', function() {
+    if ($(this).val() === 'false') {
+      $('#attendance_selection_wrapper').slideUp();
+    } else {
+      $('#attendance_selection_wrapper').slideDown();
+    }
+  }).change();
+  
 });

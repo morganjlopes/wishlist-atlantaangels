@@ -46,6 +46,14 @@
         <%= f.input :household_children_count, collection: 1..10, input_html: { class: 'form-control' }, label: "How many children are in the home?", include_blank: false %>
       </div>
 
+      <div class='field'>
+        <%= f.input :is_attending, collection: { 'Yes, we will attend' => true, 'I will not be able to make it' => false }, label: 'Will your family be joining us at our annual holiday party?', input_html: { class: 'form-control' }, hint: 'Our annual holiday party is at Roswell Movie Tavern on Saturday, December 7', include_blank: false %>
+      </div>
+
+      <div class='field' id='attendance_selection_wrapper'>
+        <%= f.input :attendance_selection, collection: ['Elf', 'Moana 2', 'The Best Christmas Pageant Ever'], label: 'If Yes, which movie would you and your family like to watch?', input_html: { class: 'form-control' }, include_blank: false %>
+      </div>
+
       <% unless @family.new_record? %>
         <div class='field'>
           <%= f.input :slug, input_html: { class: 'form-control' } %>
