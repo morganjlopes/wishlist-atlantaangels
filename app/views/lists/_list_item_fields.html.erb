@@ -1,0 +1,11 @@
+<fieldset class='field'>
+  <div class='row'>
+    <div class='col-10'>
+      <%= f.input :name, input_html: { class: 'form-control', placeholder: 'Item Name...' }, label: false %>
+    </div>
+    <div class='col-2'>
+      <%= f.hidden_field :_destroy %>
+      <%= link_to "remove", '#', class: "remove_fields btn btn-outline-danger btn-sm mt-1" %>
+    </div>
+  </div>
+</fieldset>

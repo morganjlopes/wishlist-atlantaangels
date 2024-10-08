@@ -1,45 +1,5 @@
-/admin
-/organizers
-
-rails g scaffold Event name description:text slug
-Event
-- name
-
-rails g scaffold Family name phone email address holiday wrap_gifts:boolean household_caregivers_count:integer household_children_count:integer
-Family
-- name
-- phone
-- address
-- What Holiday do you celebrate?
-- Would you link the gifts wrapped?
-- How many caregivers are in the home?
-- How many children are in the home?
-
-rails g scaffold List family:references name age gender gift_card_store
-Child / List
-- name
-- age
-- gender
-- gift_card_store
-
-rails g model ListItem list:references name description:text url
-
-Add a Wishlist
-Add an Item
-- name
-- description
-- url
-
-Sponsor
-name
-email
-phone
-
-WishSponsor
-
-
-
-<% if @family.lists.any? && params[:hide_review].nil? %>
+<div class='container w-md'>
+  <% if @family.lists.any? && params[:hide_review].nil? && params[:action] == 'new' %>
     <div class='card mb-4'>
       <div class='card-header'>
         <h2>Review Wishlists</h2>
@@ -74,7 +34,7 @@ WishSponsor
       <div class='card-footer'>
         <div class='row'>
           <div class='col-6'>
-            <%= link_to 'Add New List', url_for(hide_review: true), class: 'btn btn-outline-secondary w-100 btn-lg' %>
+            <%= link_to 'Add New Wishlist', url_for(hide_review: true), class: 'btn btn-outline-secondary w-100 btn-lg' %>
           </div>
           <div class='col-6'>
             <%= form_for @list, url: lists_complete_event_family_path(@event, @family, @list), method: :put do |f|%>
@@ -85,3 +45,6 @@ WishSponsor
       </div>
     </div>
   <% end %>
+
+  <%= render "form", list: @list, title: 'New Wishlist', description: "Please add a wishlist for each child in care. We suggest donors spend ~ $100 per child, so please keep this in mind when building each child's wishlist." %>
+</div>

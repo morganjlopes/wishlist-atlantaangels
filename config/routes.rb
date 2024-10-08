@@ -8,6 +8,17 @@ Rails.application.routes.draw do
     passwords:          'users/passwords'
   }
 
+  resources :events do
+    resources :families do
+      member do
+        put :lists_complete
+        get :confirmation
+      end
+
+      resources :lists
+    end
+  end
+
   namespace :admin do
     resource :settings
     resources :users, only: [:index]

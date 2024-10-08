@@ -1,8 +1,15 @@
 :root {
-  --bs-primary: #5500ff!important;
-  --bs-btn-border-color: #5500ff!important;
-  --bs-btn-bg: #5500ff!important;
-  --bs-btn-color: #5500ff!important;
+  --bs-primary: #a29060!important;
+  --bs-btn-border-color: #a29060!important;
+  --bs-btn-bg: #a29060!important;
+  --bs-btn-color: #a29060!important;
+  --bs-primary-dark: #7b6a38!important;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
 }
 
 nav.navbar, .nav {
@@ -26,4 +33,69 @@ nav.navbar {
 
 .field {
   margin-bottom: 1rem;
+}
+
+.w-md {
+  max-width: 600px;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+.btn {
+  border-radius: 500px;
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  &:hover,
+  &:active,
+  &.active,
+  &:focus {
+    background-color: var(--bs-primary-dark);
+    border-color: var(--bs-primary-dark);
+  }
+}
+
+.card {
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+  .card-header {
+    padding: 1.5rem;
+    h1, h2 {
+      margin-bottom: 0px;
+    }
+  }
+  .card-body,
+  .card-footer {
+    padding: 1.5rem;
+  }
+}
+
+.error_notification,
+.field_with_errors .error {
+  color: red;
+  border-color: red;
+  background-color: #fff4f4;
+  border: 1px solid red;
+  border-radius: 7px;
+  padding: 14px;
+  display: block;
+}
+
+.error_notification {
+  margin-bottom: 1rem;
+}
+
+.field_with_errors {
+  label, .hint {
+    color: red;
+  }
+  .error {
+    margin-top: .5rem;
+  }
 }

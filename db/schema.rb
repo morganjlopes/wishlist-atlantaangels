@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_02_092050) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_06_095504) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_02_092050) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "families", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.string "address"
+    t.string "holiday"
+    t.boolean "wrap_gifts"
+    t.integer "household_caregivers_count"
+    t.integer "household_children_count"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "lists_completed_at"
+    t.index ["event_id"], name: "index_families_on_event_id"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -74,6 +91,27 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_02_092050) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "list_items", force: :cascade do |t|
+    t.bigint "list_id", null: false
+    t.string "name"
+    t.text "description"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_list_items_on_list_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.bigint "family_id", null: false
+    t.string "name"
+    t.string "age"
+    t.string "gender"
+    t.string "gift_card_store"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id"], name: "index_lists_on_family_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -112,4 +150,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_02_092050) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "families", "events"
+  add_foreign_key "list_items", "lists"
+  add_foreign_key "lists", "families"
 end
