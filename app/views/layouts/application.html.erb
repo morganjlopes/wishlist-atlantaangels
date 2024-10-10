@@ -8,7 +8,12 @@
 
   <body>
     <%= render 'layouts/flash_notices' %>
-    <div id='main' class='mt-5'>
+
+    <div class='text-center my-4'>
+      <%= image_tag 'logo.jpg', style: 'max-width: 150px;' %>
+    </div>
+
+    <div id='main' class=''>
       <%= yield %>
     </div>
 
