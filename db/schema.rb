@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_08_203050) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_10_183609) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,8 +79,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_08_203050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "lists_completed_at"
-    t.boolean "is_attending"
+    t.string "is_attending"
     t.string "attendance_selection"
+    t.boolean "is_support_requested"
     t.index ["event_id"], name: "index_families_on_event_id"
   end
 
@@ -113,6 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_08_203050) do
     t.string "gift_card_store"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_qualified"
     t.index ["family_id"], name: "index_lists_on_family_id"
   end
 

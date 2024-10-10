@@ -11,7 +11,7 @@
 
     <div class='card-body'>
       <% if defined?(description) %>
-        <p><%= description %></p>
+        <p><%== description %></p>
       <% end %>
 
       <div class='field'>
@@ -27,7 +27,7 @@
       </div>
 
       <div class='field'>
-        <%= f.input :address, input_html: { class: 'form-control' }, label: 'County of Residence', collection: ['Cobb', 'Paulding', 'Fulton', 'DeKalb', 'Cherokee', 'Gwinnett', 'Forsyth'].sort, include_blank: 'Select a County' %>
+        <%= f.input :address, input_html: { class: 'form-control' }, label: 'County of Residence', collection: ['Cobb', 'Paulding', 'Fulton', 'DeKalb', 'Cherokee', 'Gwinnett', 'Forsyth', 'Rockdale', 'Henry', 'Clayton', 'Douglas'].sort, include_blank: 'Select a County' %>
       </div>
 
       <div class='field'>
@@ -47,11 +47,19 @@
       </div>
 
       <div class='field'>
-        <%= f.input :is_attending, collection: { 'Yes, we will attend' => true, 'I will not be able to make it' => false }, label: 'Will your family be joining us at our annual holiday party?', input_html: { class: 'form-control' }, hint: 'Our annual holiday party is at Roswell Movie Tavern on Saturday, December 7', include_blank: false %>
+        <%= f.input :is_attending, as: :radio_buttons, collection: [ 
+          'Yes, on Saturday, December 7 at Roswell Movie Tavern at 10am.',
+          'Yes, on Sunday, December 8 at Tucker Movie Tavern at 10am.',
+          'I will not be able to make it.',
+          'I am not sure.' ], label: 'Will your family be joining us at our annual holiday party?', input_html: { class: '' }, hint: 'There will be two separate holiday party options in different areas of Atlanta. Each will have the same movie showings with wishlist items, activities, and one large popcorn per household. Please choose the event day and movie showing that works best for your household!', include_blank: false %>
       </div>
 
       <div class='field' id='attendance_selection_wrapper'>
         <%= f.input :attendance_selection, collection: ['Elf', 'Moana 2', 'The Best Christmas Pageant Ever'], label: 'If Yes, which movie would you and your family like to watch?', input_html: { class: 'form-control' }, include_blank: false %>
+      </div>
+
+      <div class='field'>
+        <%= f.input :is_support_requested, label: 'Do you need support with gifts for children in care?', collection: {'Yes' => true, 'No' => false}, input_html: { class: 'form-control' }, include_blank: false %>
       </div>
 
       <% unless @family.new_record? %>

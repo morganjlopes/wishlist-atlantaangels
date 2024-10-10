@@ -15,4 +15,31 @@
   </p>
 
   <%= new_event_family_url(event) %>
+
+  <h2>Families</h2>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Wishlists</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% event.families.each do |family| %>
+        <tr>
+          <td>
+            <%= family.name %>
+          </td>
+          <td>
+            <%= family.email %>
+          </td>
+          <td>
+            <%= family.lists.count %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

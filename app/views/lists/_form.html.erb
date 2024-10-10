@@ -28,11 +28,15 @@
       </div>
 
       <div class='field'>
+        <%= f.input :is_qualified, input_html: { class: 'form-control' }, collection: { 'Yes' => true, 'No' => false }, label: "Is child in foster care?" %>
+      </div>
+
+      <div class='field'>
         <%= f.input :gift_card_store, input_html: { class: 'form-control' }, label: 'Where would your child be excited to get a gift card from?' %>
       </div>
 
       <h2>Items</h2>
-      <p>Please list each item individually and be as specific as possible!</p>
+      <p>Please be as specific as possible when filling out the form for each child in your household! We will aim to get the exact items requested, but may get ones that are similar in nature (e.g. American Girl Doll is requested, Truly Me doll is provided).</p>
       <%= f.association :list_items do |li| %>
         <%= render 'list_item_fields', f: li %>
       <% end %>

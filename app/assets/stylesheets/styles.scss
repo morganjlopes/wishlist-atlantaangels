@@ -39,6 +39,13 @@ footer {
   min-height: 100vh;
 }
 
+.radio {
+  display: block;
+  input {
+    margin-right: 10px;
+  }
+}
+
 .field {
   margin-bottom: 1rem;
 }

@@ -38,7 +38,8 @@ class FamiliesController < ApplicationController
 
     respond_to do |format|
       if @family.save
-        format.html { redirect_to new_event_family_list_path(@family.event, @family), notice: "Family was successfully created." }
+        redirect_url = @family.is_support_requested ? new_event_family_list_path(@family.event, @family) : confirmation_event_family_path(@family.event, @family)
+        format.html { redirect_to redirect_url, notice: "Family was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -82,6 +83,7 @@ class FamiliesController < ApplicationController
         :household_children_count,
         :slug,
         :is_attending,
+        :is_support_requested,
         :attendance_selection
       )
     end

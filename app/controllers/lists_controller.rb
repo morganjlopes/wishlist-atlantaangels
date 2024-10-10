@@ -61,6 +61,7 @@ class ListsController < ApplicationController
         :name,
         :age,
         :gender,
+        :is_qualified,
         :gift_card_store,
         list_items_attributes: %i[id name _destroy]
       )
