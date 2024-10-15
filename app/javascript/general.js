@@ -4,7 +4,7 @@ $(document).on('turbo:before-cache', function () {
 
 $(document).on('turbo:load', function() {
   
-  $(document).on('click', 'form .remove_fields', function(event) {
+  $('form').on('click', '.remove_fields', function(event) {
     event.preventDefault();
 
     $(this).prev('input[type=hidden]').val('1');

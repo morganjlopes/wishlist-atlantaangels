@@ -4,6 +4,8 @@ class EventsController < ApplicationController
   def index
     @page_title = "Events"
     @events     = Event.all
+
+    redirect_to new_event_family_path(@events.first) if @events.count == 1
   end
 
   def show
