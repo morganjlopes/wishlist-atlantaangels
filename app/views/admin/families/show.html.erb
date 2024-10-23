@@ -1,0 +1,57 @@
+<p>
+  <strong>Name</strong><br>
+  <%= @family.name %>
+</p>
+
+<p>
+  <strong>Phone</strong><br>
+  <%= @family.phone %>
+</p>
+
+<p>
+  <strong>Email</strong><br>
+  <%= @family.email %>
+</p>
+
+<p>
+  <strong>Address</strong><br>
+  <%= @family.address %>
+</p>
+
+<p>
+  <strong>Holiday</strong><br>
+  <%= @family.holiday %>
+</p>
+
+<p>
+  <strong>Wrap the Gifts?</strong><br>
+  <%= @family.wrap_gifts %>
+</p>
+
+<p>
+  <strong>Household Caregivers</strong><br>
+  <%= @family.household_caregivers_count %>
+</p>
+
+<p>
+  <strong>Household Children</strong><br>
+  <%= @family.household_children_count %>
+</p>
+
+<p>
+  <strong>Attending Holiday Party?</strong><br>
+  <%= @family.is_attending %>
+</p>
+
+<p>
+  <strong>Selection</strong><br>
+  <%= @family.attendance_selection %>
+</p>
+
+<p>
+  <strong>Is support requested?</strong><br>
+  <%= @family.is_support_requested %>
+</p>
+
+<h2>Wishlists</h2>
+<%= render 'admin/lists/table', lists: @family.lists %>

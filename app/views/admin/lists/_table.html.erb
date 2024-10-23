@@ -16,7 +16,7 @@
           <div class='small'><%= format_date(list.created_at) %></div>
         </td>
         <td>
-          <%= list.family&.name %>
+          <%= link_to list.family&.name, [:admin, list.family] %>
         </td>
         <td class='text-center'>
           <%= list.age %>

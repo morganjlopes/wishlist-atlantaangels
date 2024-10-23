@@ -1,0 +1,34 @@
+<table class='table '>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Holiday</th>
+      <th>Attending</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @families.each do |family| %>
+      <tr>
+        <td>
+          <%= link_to family.name, admin_family_path(family) %>
+        </td>
+        <td>
+          <%= family.address %>
+        </td>
+        <td>
+          <%= family.holiday %>
+        </td>
+        <td>
+          <%= family.is_attending ? 'yes' : 'no' %><br>
+          <% if family.is_attending %>
+            <%= truncate(family.attendance_selection, length: 15) %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to 'View Wishlists', admin_lists_path(family_id: family), class: 'btn btn-sm btn-outline-secondary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
