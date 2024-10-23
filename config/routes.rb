@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :ahoy_visits, only: [:index], path: 'visits'
     resources :ahoy_events, only: [:index], path: 'ahoy_events'
     resources :events
+    resources :lists
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

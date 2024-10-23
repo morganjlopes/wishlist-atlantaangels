@@ -35,6 +35,12 @@ footer {
   font-style: italic;
 }
 
+table {
+  td, th {
+    vertical-align: middle;
+  }
+}
+
 #main {
   min-height: 100vh;
 }
@@ -73,6 +79,19 @@ footer {
   &:focus {
     background-color: var(--bs-primary-dark);
     border-color: var(--bs-primary-dark);
+  }
+}
+
+.btn-outline-primary {
+  color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  &:hover,
+  &:active,
+  &.active,
+  &:focus {
+    color: #fff;
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
   }
 }
 

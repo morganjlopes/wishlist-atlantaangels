@@ -1,0 +1,16 @@
+<table class='table '>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% list_items.each do |list_item| %>
+      <tr>
+        <td>
+          <%= list_item.name %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

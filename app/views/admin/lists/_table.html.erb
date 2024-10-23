@@ -1,0 +1,33 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Family</th>
+      <th class='text-center'>Age</th>
+      <th class='text-center'>Items</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% lists.each do |list| %>
+      <tr>
+        <td>
+          <%= list.name %>
+          <div class='small'><%= format_date(list.created_at) %></div>
+        </td>
+        <td>
+          <%= list.family&.name %>
+        </td>
+        <td class='text-center'>
+          <%= list.age %>
+        </td>
+        <td class='text-center'>
+          <%= list.list_items.count %>
+        </td>
+        <td class='text-end'>
+          <%= link_to 'View Wishlist', [:admin, list], class: 'btn btn-outline-secondary btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
