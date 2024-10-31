@@ -1,0 +1,33 @@
+<%= simple_form_for [:admin, @list] do |f| %>
+  <div class='field'>
+    <%= f.input :name, input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class='field'>
+    <%= f.input :age, input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class='field'>
+    <%= f.input :gender, input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class='field'>
+    <%= f.input :gift_card_store, input_html: { class: 'form-control' } %>
+  </div>
+
+  <h2>Items</h2>
+
+  <div class='field'>
+    <%= f.association :list_items do |li| %>
+      <%= render 'list_item_fields', f: li %>
+    <% end %>
+
+    <%= link_to_add_fields "Add Item", f, :list_items %>
+  </div>
+
+  <div class='field'>
+    <%= f.input :is_published, input_html: { class: '' }, label: 'List Publicly for Sponsorship' %>
+  </div>
+
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

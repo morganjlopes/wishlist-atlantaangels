@@ -1,1 +1,20 @@
+<div class='row'>
+  <div class='col-sm-6'>
+    <ul class="nav nav-pills">
+      <% ['all', 'pending', 'published'].each do |scope| %>
+        <li class="nav-item">
+          <% if scope == 'all' %>
+            <%= link_to scope, url_for(scope: nil), class: "nav-link #{params[:scope].nil? ? 'active' : ''}" %>
+          <% else %>
+            <%= link_to scope, url_for(scope: scope), class: "nav-link #{scope == params[:scope] ? 'active' : ''}" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class='col-sm-6'>
+    <%= render 'shared/search' %>
+  </div>
+</div>
+
 <%= render 'admin/lists/table', lists: @lists %>

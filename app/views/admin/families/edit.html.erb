@@ -1,0 +1,7 @@
+<%= simple_form_for [:admin, @family] do |f| %>
+  <div class='field'>
+    <%= f.input :name, input_html: { class: 'form-control' } %>
+  </div>
+
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

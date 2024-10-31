@@ -5,6 +5,8 @@
       <th>Address</th>
       <th>Holiday</th>
       <th>Attending</th>
+      <th class='text-center'>Wish Lists</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -25,8 +27,13 @@
             <%= truncate(family.attendance_selection, length: 15) %>
           <% end %>
         </td>
-        <td>
-          <%= link_to 'View Wishlists', admin_lists_path(family_id: family), class: 'btn btn-sm btn-outline-secondary' %>
+        <td class='text-center'>
+          <%= link_to pluralize(family.lists.count, 'wishlists'), admin_lists_path(family_id: family), class: 'btn btn-sm btn-link' %>
+        </td>
+        <td class='text-end'>
+          <% if false %>
+            <%= link_to 'Edit', edit_admin_family_path(family), class: 'btn btn-sm btn-outline-secondary' %>
+          <% end %>
         </td>
       </tr>
     <% end %>

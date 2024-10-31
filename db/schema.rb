@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_10_183609) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_31_154128) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
 
   create_table "ahoy_events", force: :cascade do |t|
@@ -79,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_10_183609) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "lists_completed_at"
-    t.string "is_attending"
+    t.boolean "is_attending"
     t.string "attendance_selection"
     t.boolean "is_support_requested"
     t.index ["event_id"], name: "index_families_on_event_id"
@@ -115,6 +116,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_10_183609) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_qualified"
+    t.boolean "is_published", default: false
     t.index ["family_id"], name: "index_lists_on_family_id"
   end
 

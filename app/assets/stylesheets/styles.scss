@@ -31,6 +31,13 @@ nav.navbar {
   }
 }
 
+.nav-pills {
+  .nav-link.active {
+    background-color: var(--bs-primary)!important;
+    color: white!important;
+  }
+}
+
 footer {
   font-style: italic;
 }
@@ -43,6 +50,12 @@ table {
 
 #main {
   min-height: 100vh;
+}
+
+.boolean {
+  input {
+    margin-right: 10px;
+  }
 }
 
 .radio {
