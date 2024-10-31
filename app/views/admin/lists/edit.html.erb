@@ -26,7 +26,7 @@
   </div>
 
   <div class='field'>
-    <%= f.input :is_published, input_html: { class: '' }, label: 'List Publicly for Sponsorship' %>
+    <%= f.input :is_published, as: :boolean, input_html: { class: '' }, label: 'List Publicly for Sponsorship' %>
   </div>
 
   <%= f.button :submit, class: 'btn btn-primary' %>
