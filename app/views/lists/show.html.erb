@@ -1,10 +1,33 @@
-<p style="color: green"><%= notice %></p>
+<div class='container w-md text-center'>
+    
+  <div class='card'>
+    <div class='card-header'>
+      <h1><%= @list.alias %> <em class='text-muted small lead'>(alias)</em></h1>
+    </div>
+    <div class='card-body'>
+      <p class='lead'>
+        This wishlist is for a <%= @list.gender %> child (<%= @list.age %>) living in <%= @list.family.address %> County. By claiming this wishlist, you are committing to purchase the items listed below.
+      </p>
 
-<%= render @list %>
-
-<div>
-  <%= link_to "Edit this list", edit_list_path(@list) %> |
-  <%= link_to "Back to lists", lists_path %>
-
-  <%= button_to "Destroy this list", @list, method: :delete %>
+      <table class='table text-start'>
+        <thead>
+          <tr>
+            <th>Item Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @list.list_items.each do |list_item| %>
+            <tr>
+              <td>
+                <%= list_item.name %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class='card-footer'>
+      <%= link_to 'Claim Wishlist', '#', class: 'btn btn-primary btn-lg d-block' %>
+    </div>
+  </div>
 </div>

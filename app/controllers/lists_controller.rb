@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   before_action :_set_event
-  before_action :_set_family
+  before_action :_set_family, except: %i[ index show ]
   before_action :set_list, only: %i[ show edit update destroy ]
 
   def index
@@ -51,7 +51,7 @@ class ListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
-      @list = List.find(params[:id])
+      @list = List.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -30,6 +30,7 @@ Add an Item
 - description
 - url
 
+rails g scaffold Sponsor name email phone address
 Sponsor
 name
 email

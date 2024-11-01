@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_31_154128) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_01_170338) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -117,6 +117,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_31_154128) do
     t.datetime "updated_at", null: false
     t.boolean "is_qualified"
     t.boolean "is_published", default: false
+    t.string "alias"
+    t.string "slug"
     t.index ["family_id"], name: "index_lists_on_family_id"
   end
 

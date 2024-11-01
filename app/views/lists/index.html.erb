@@ -1,14 +1,36 @@
-<p style="color: green"><%= notice %></p>
+<div class='container w-lg text-center'>
+  <h1>Sponsor a Holiday Wish List</h1>
 
-<h1>Lists</h1>
-
-<div id="lists">
-  <% @lists.each do |list| %>
-    <%= render list %>
-    <p>
-      <%= link_to "Show this list", list %>
-    </p>
-  <% end %>
+  <table class='table text-start mb-4'>
+    <thead>
+      <tr>
+        <th>Child Alias</th>
+        <th class='text-center'>Gender</th>
+        <th class='text-center'>Age</th>
+        <th class='text-center'>Location</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @lists.each do |list| %>
+        <tr>
+          <td>
+            <%= list.alias %>
+          </td>
+          <td class='text-center'>
+            <%= list.gender %>
+          </td>
+          <td class='text-center'>
+            <%= list.age %>
+          </td>
+          <td class='text-center'>
+            <%= list.family.address %>
+          </td>
+          <td class='text-end'>
+            <%= link_to 'View Wishlist', event_list_path(@event, list), class: 'btn btn-primary' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
-<%= link_to "New list", new_list_path %>

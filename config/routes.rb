@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   }
 
   resources :events do
+    resources :lists, only: [:index, :show]
+    
     resources :families do
       member do
         put :lists_complete
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
 
       resources :lists
     end
+
   end
 
   namespace :admin do

@@ -27,12 +27,12 @@ gem 'geocoder', '~> 1.3', '>= 1.3.7'
 gem 'devise'
 gem 'pg_search'
 gem "jquery-rails"
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'main'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
 group :development, :test, :staging do
-  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'main'
   gem 'letter_opener_web', '~> 3.0'
 end
 

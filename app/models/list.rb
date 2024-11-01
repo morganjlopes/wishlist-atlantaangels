@@ -1,5 +1,7 @@
 class List < ApplicationRecord
   include PgSearch::Model
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   belongs_to :family
 
@@ -18,6 +20,8 @@ class List < ApplicationRecord
 
   validates :name,            presence: true
   validates :age,             presence: true
+
+  before_save :_ensure_alias
 
   def status
     if is_published
@@ -62,5 +66,8 @@ class List < ApplicationRecord
     end
   end
 
+  def _ensure_alias
+    self.alias = Faker::Name.name_with_middle.split(' ')[0..1].join(" ")
+  end
 end
 

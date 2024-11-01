@@ -38,6 +38,14 @@ nav.navbar {
   }
 }
 
+.w-md {
+  max-width: 600px;
+}
+
+.w-lg {
+  max-width: 800px;
+}
+
 footer {
   font-style: italic;
 }
@@ -67,10 +75,6 @@ table {
 
 .field {
   margin-bottom: 1rem;
-}
-
-.w-md {
-  max-width: 600px;
 }
 
 .hint {
