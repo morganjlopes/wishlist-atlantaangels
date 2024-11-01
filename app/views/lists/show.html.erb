@@ -1,33 +1,46 @@
 <div class='container w-md text-center'>
-    
+  
+  <%= link_to 'View All Wishlists', event_lists_path(@event), class: 'btn btn-outline d-block mb-4' %>
+
   <div class='card'>
     <div class='card-header'>
       <h1><%= @list.alias %> <em class='text-muted small lead'>(alias)</em></h1>
     </div>
     <div class='card-body'>
-      <p class='lead'>
-        This wishlist is for a <%= @list.gender %> child (<%= @list.age %>) living in <%= @list.family.address %> County. By claiming this wishlist, you are committing to purchase the items listed below.
-      </p>
 
-      <table class='table text-start'>
-        <thead>
-          <tr>
-            <th>Item Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @list.list_items.each do |list_item| %>
+      <% unless @list.sponsor.present? %>
+        <p class='lead'>
+          This wishlist is for a <%= @list.gender %> child (<%= @list.age %>) living in <%= @list.family.address %> County. By claiming this wishlist, you are committing to purchase the items listed below.
+        </p>
+
+        <table class='table text-start'>
+          <thead>
             <tr>
-              <td>
-                <%= list_item.name %>
-              </td>
+              <th>Item Name</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @list.list_items.each do |list_item| %>
+              <tr>
+                <td>
+                  <%= list_item.name %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class='lead'>
+          This wishlist has been claimed. Please consider sponsoring another wishlist.
+        </p>
+      <% end %>
     </div>
     <div class='card-footer'>
-      <%= link_to 'Claim Wishlist', '#', class: 'btn btn-primary btn-lg d-block' %>
+      <% if @list.sponsor.present? %>
+        <%= link_to 'View All Wishlists', event_lists_path(@event), class: 'btn btn-primary btn-lg d-block' %>
+      <% else %>
+        <%= link_to 'Claim Wishlist', claim_event_list_path(@event, @list), class: 'btn btn-primary btn-lg d-block' %>
+      <% end %>
     </div>
   </div>
 </div>

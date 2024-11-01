@@ -1,13 +1,25 @@
 class ListsController < ApplicationController
   before_action :_set_event
-  before_action :_set_family, except: %i[ index show ]
-  before_action :set_list, only: %i[ show edit update destroy ]
+  before_action :_set_family, except: %i[ index show claim ]
+  before_action :set_list, only: %i[ show edit update destroy claim ]
 
   def index
-    @lists = List.all
+    @lists = List.sponsorable
   end
 
   def show
+  end
+
+  def claim
+    if session[:sponsor_id].present?
+      @list.update(sponsor_id: session[:sponsor_id])
+
+      redirect_to event_list_path(@event, @list), notice: "Wishlist was successfully claimed."
+    else
+      session[:redirect_url] = claim_event_list_path(@event, @list)
+
+      redirect_to new_sponsor_path
+    end
   end
 
   def new

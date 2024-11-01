@@ -36,7 +36,9 @@ name
 email
 phone
 
-WishSponsor
+ListSponsor
+list:references
+sponsor:references
 
 
 

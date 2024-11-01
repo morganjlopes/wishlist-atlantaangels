@@ -1,0 +1,29 @@
+
+<%= simple_form_for(@sponsor) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <%= f.input :redirect_url, as: :hidden %>
+  <div class="form-inputs">
+    <div class='field'>
+      <%= f.input :full_name, input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class='field'>
+      <%= f.input :email, input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class='field'>
+      <%= f.input :phone, input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class='field'>
+      <%= f.input :address, input_html: { class: 'form-control' } %>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Save & Continue', class: 'btn btn-primary btn-lg w-100' %>
+  </div>
+<% end %>

@@ -4,13 +4,16 @@ class List < ApplicationRecord
   friendly_id :name, use: :slugged
 
   belongs_to :family
+  belongs_to :sponsor, optional: true
 
   has_many :list_items, dependent: :destroy
 
   accepts_nested_attributes_for :list_items, allow_destroy: true
 
-  scope :published, -> { where(is_published: true) }
-  scope :pending,   -> { where.not(is_published: true) }
+  scope :published,   -> { where(is_published: true) }
+  scope :pending,     -> { where.not(is_published: true) }
+  scope :sponsorable, -> { published.where(sponsor_id: nil) }
+  scope :sponsored,   -> { published.where.not(sponsor_id: nil) }
 
   pg_search_scope :contains,
                   against: [

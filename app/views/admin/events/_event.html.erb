@@ -14,7 +14,16 @@
     <%= event.slug %>
   </p>
 
-  <%= new_event_family_url(event) %>
+  <p>
+    <strong>Family Wishlist Creation Url (<%= link_to 'Go', new_event_family_url(event), target: :_blank %>):</strong><br>
+    <pre><%= new_event_family_url(event) %></pre>
+  </p>
+
+  <p>
+    <strong>Public Sponsor Url (<%= link_to 'Go', event_lists_url(event), target: :_blank %>):</strong><br>
+    <pre><%= event_lists_url(event) %></pre>
+  </p>
+
 
   <h2>Families</h2>
 

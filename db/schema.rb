@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_01_170338) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_01_181436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -119,7 +119,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_01_170338) do
     t.boolean "is_published", default: false
     t.string "alias"
     t.string "slug"
+    t.bigint "sponsor_id"
     t.index ["family_id"], name: "index_lists_on_family_id"
+    t.index ["sponsor_id"], name: "index_lists_on_sponsor_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -128,6 +130,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_01_170338) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["var"], name: "index_settings_on_var", unique: true
+  end
+
+  create_table "sponsors", force: :cascade do |t|
+    t.string "full_name"
+    t.string "email"
+    t.string "phone"
+    t.string "address"
+    t.string "slug"
+    t.uuid "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -161,4 +174,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_01_170338) do
   add_foreign_key "families", "events"
   add_foreign_key "list_items", "lists"
   add_foreign_key "lists", "families"
+  add_foreign_key "lists", "sponsors"
 end

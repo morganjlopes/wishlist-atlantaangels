@@ -1,6 +1,10 @@
 <div class='container w-lg text-center'>
   <h1>Sponsor a Holiday Wish List</h1>
 
+  <p>
+    <%= pluralize(@lists.count, 'wishlist') %> remaining (of <%= pluralize(List.published.count, 'wishlist') %>)
+  </p>
+
   <table class='table text-start mb-4'>
     <thead>
       <tr>
