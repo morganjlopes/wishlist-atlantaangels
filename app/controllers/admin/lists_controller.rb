@@ -11,6 +11,11 @@ class Admin::ListsController < Admin::BaseController
       @family = Family.friendly.find(params[:family_id])
       @lists      = @lists.where(family_id: @family.id)
     end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @lists.to_csv }
+    end
   end
 
   def show

@@ -4,6 +4,13 @@ class Admin::FamiliesController < Admin::BaseController
   def index
     @page_title = "Families"
     @families   = Family.all
+    @families   = @families.send(params[:scope]) if params[:scope].present?
+    @families   = @families.contains(params[:q]) if params[:q].present?
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @families.to_csv }
+    end
   end
 
   def show

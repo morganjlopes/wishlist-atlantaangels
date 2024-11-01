@@ -27,5 +27,40 @@ class List < ApplicationRecord
     end
   end
 
+  def family_name
+    family&.name
+  end
+
+  def event_name
+    family&.event&.name
+  end
+
+  def list_items_count
+    list_items.count
+  end
+
+  def self.to_csv
+    attrs = [
+      "id",
+      "name",
+      "event_name",
+      "family_name",
+      "age",
+      "gender",
+      "gift_card_store",
+      "list_items_count",
+      "created_at",
+      "is_published",
+    ]
+
+    CSV.generate do |csv|
+      csv << attrs
+    
+      all.each do |family|
+        csv << attrs.map {|attr| family.send(attr)}
+      end
+    end
+  end
+
 end
 
