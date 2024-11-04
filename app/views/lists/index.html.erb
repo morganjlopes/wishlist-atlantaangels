@@ -1,40 +1,51 @@
 <div class='container w-lg text-center'>
   <h1>Sponsor a Holiday Wish List</h1>
 
-  <p>
-    <%= pluralize(@lists.count, 'wishlist') %> remaining (of <%= pluralize(List.published.count, 'wishlist') %>)
+  <p class='py-3'>
+    We're excited that you would like to support children, youth, and families experiencing foster care this holiday season! Please select one of more youth below that you are committed to supporting. We ask that the total gifts be valued at <u>$100 per child</u> and that the gifts arrive to us by <u>December 2nd</u>. Gifts can be delivered or shipped to the Atlanta Angels office (2555 Northwinds Pkwy, Alpharetta, GA 30009.) Thank you for your help in making this a memorable holiday season!
   </p>
 
-  <table class='table text-start mb-4'>
-    <thead>
-      <tr>
-        <th>Child Alias</th>
-        <th class='text-center'>Gender</th>
-        <th class='text-center'>Age</th>
-        <th class='text-center'>Location</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @lists.each do |list| %>
-        <tr>
-          <td>
-            <%= list.alias %>
-          </td>
-          <td class='text-center'>
-            <%= list.gender %>
-          </td>
-          <td class='text-center'>
-            <%= list.age %>
-          </td>
-          <td class='text-center'>
-            <%= list.family.address %>
-          </td>
-          <td class='text-end'>
-            <%= link_to 'View Wishlist', event_list_path(@event, list), class: 'btn btn-primary' %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class='card'>
+    <div class='card-header'>
+      <p class='mb-0'>
+        <em><%= pluralize(@lists.count, 'wishlist') %> remaining (of <%= pluralize(List.published.count, 'wishlist') %>)</em>
+      </p>
+    </div>
+
+    <div class='card-body'>
+
+      <table class='table text-start mb-4'>
+        <thead>
+          <tr>
+            <th>Child Alias</th>
+            <th class='text-center'>Gender</th>
+            <th class='text-center'>Age</th>
+            <th class='text-center'>Location</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @lists.each do |list| %>
+            <tr>
+              <td>
+                <%= list.alias %>
+              </td>
+              <td class='text-center'>
+                <%= list.gender %>
+              </td>
+              <td class='text-center'>
+                <%= list.age %>
+              </td>
+              <td class='text-center'>
+                <%= list.family.address %>
+              </td>
+              <td class='text-end'>
+                <%= link_to 'View Wishlist', event_list_path(@event, list), class: 'btn btn-primary' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

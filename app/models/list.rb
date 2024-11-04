@@ -70,7 +70,9 @@ class List < ApplicationRecord
   end
 
   def _ensure_alias
-    self.alias = Faker::Name.name_with_middle.split(' ')[0..1].join(" ")
+    until self.alias.present? && List.where(alias: self.alias).empty?
+      self.alias = SecureRandom.random_number(1_000..9_999).to_s
+    end
   end
 end
 
