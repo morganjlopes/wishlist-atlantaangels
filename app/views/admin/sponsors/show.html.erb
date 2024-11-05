@@ -1,0 +1,6 @@
+<%= render @sponsor %>
+
+<% if @sponsor.lists.present? %>
+  <h2>Wishlists</h2>
+  <%= render 'admin/lists/table', lists: @sponsor.lists %>
+<% end %>

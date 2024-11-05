@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def _check_api_key
+    unless params[:t] == Setting.api_key
+      head :unauthorized
+    end
+  end
+
   def track_action
     ahoy.track "action_success", request.path_parameters
   end

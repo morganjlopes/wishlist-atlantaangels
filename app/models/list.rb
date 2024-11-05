@@ -13,7 +13,7 @@ class List < ApplicationRecord
   scope :published,   -> { where(is_published: true) }
   scope :pending,     -> { where.not(is_published: true) }
   scope :sponsorable, -> { published.where(sponsor_id: nil) }
-  scope :sponsored,   -> { published.where.not(sponsor_id: nil) }
+  scope :sponsored,   -> { published.where.not(sponsor_id: nil).order(sponsored_at: :desc) }
 
   pg_search_scope :contains,
                   against: [
@@ -70,6 +70,8 @@ class List < ApplicationRecord
   end
 
   def _ensure_alias
+    return if self.alias.present?
+
     until self.alias.present? && List.where(alias: self.alias).empty?
       self.alias = SecureRandom.random_number(1_000..9_999).to_s
     end

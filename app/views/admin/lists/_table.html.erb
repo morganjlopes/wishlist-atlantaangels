@@ -4,6 +4,7 @@
       <th>Name</th>
       <th>Status</th>
       <th>Family</th>
+      <th>Sponsor</th>
       <th class='text-center'>Age</th>
       <th class='text-center'>Items</th>
       <th></th>
@@ -21,6 +22,9 @@
         </td>
         <td>
           <%= link_to list.family&.name, [:admin, list.family] %>
+        </td>
+        <td>
+          <%= link_to list.sponsor&.full_name, [:admin, list.sponsor] if list.sponsor.present? %>
         </td>
         <td class='text-center'>
           <%= list.age %>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :sponsors
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener" unless Rails.env.production?
 
   devise_for :users, controllers: {
@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :lists, only: [:index, :show] do
+      collection do
+        get :feed
+      end
+
       member do
         get :claim
       end
@@ -27,8 +31,11 @@ Rails.application.routes.draw do
 
   end
 
+  resources :sponsors
+
   namespace :admin do
     resource :settings
+    resources :sponsors
     resources :users, only: [:index]
     resources :ahoy_visits, only: [:index], path: 'visits'
     resources :ahoy_events, only: [:index], path: 'ahoy_events'

@@ -1,18 +1,31 @@
 class ListsController < ApplicationController
+  before_action :_check_api_key, only: %i[ feed ]
   before_action :_set_event
-  before_action :_set_family, except: %i[ index show claim ]
+  before_action :_set_family, except: %i[ index show claim feed ]
   before_action :set_list, only: %i[ show edit update destroy claim ]
 
   def index
     @lists = List.sponsorable
+
+  end
+  
+  def feed
+    @lists = List.sponsored
+    
+    respond_to do |format|
+      format.json
+    end
   end
 
   def show
   end
 
   def claim
-    if session[:sponsor_id].present?
-      @list.update(sponsor_id: session[:sponsor_id])
+    if session[:sponsor_id].present? && Sponsor.exists?(session[:sponsor_id])
+      @list.update(
+        sponsor_id: session[:sponsor_id],
+        sponsored_at: Time.now
+      )
 
       redirect_to event_list_path(@event, @list), notice: "Wishlist was successfully claimed."
     else

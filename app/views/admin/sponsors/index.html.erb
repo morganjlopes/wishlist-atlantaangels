@@ -1,7 +1,7 @@
 <div class='row mb-4'>
   <div class='col-sm-6'>
     <ul class="nav nav-pills">
-      <% ['all', 'pending', 'published', 'sponsored'].each do |scope| %>
+      <% ['all', 'without_lists', 'with_lists'].each do |scope| %>
         <li class="nav-item">
           <% if scope == 'all' %>
             <%= link_to scope.titleize, url_for(scope: nil), class: "nav-link #{params[:scope].nil? ? 'active' : ''}" %>
@@ -20,4 +20,31 @@
   </div>
 </div>
 
-<%= render 'admin/lists/table', lists: @lists %>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th class='text-center'>Wishlists</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sponsors.each do |sponsor| %>
+      <tr>
+        <td>
+          <%= sponsor.full_name %>
+        </td>
+        <td>
+          <%= sponsor.email %>
+        </td>
+        <td class='text-center'>
+          <%= sponsor.lists.count %>
+        </td>
+        <td class='text-end'>
+          <%= link_to 'View', admin_sponsor_path(sponsor), class: 'btn btn-sm btn-outline-primary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
