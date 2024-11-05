@@ -11,6 +11,12 @@ json.array! @lists do |list|
     json.name list.family.name
   end
 
+  json.sponsor do
+    json.full_name list.sponsor.full_name
+    json.email     list.sponsor.email
+    json.phone     list.sponsor.phone
+  end
+
   json.list_items list.list_items do |list_item|
     json.name        list_item.name
     json.description list_item.description
