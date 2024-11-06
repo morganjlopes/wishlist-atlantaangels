@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_05_005720) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_06_225502) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -73,14 +73,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_05_005720) do
     t.string "email"
     t.string "address"
     t.string "holiday"
-    t.boolean "wrap_gifts"
+    t.string "wrap_gifts"
     t.integer "household_caregivers_count"
     t.integer "household_children_count"
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "lists_completed_at"
-    t.boolean "is_attending"
+    t.string "is_attending"
     t.string "attendance_selection"
     t.boolean "is_support_requested"
     t.index ["event_id"], name: "index_families_on_event_id"
