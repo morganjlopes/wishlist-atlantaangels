@@ -1,0 +1,22 @@
+<div class='row mb-4'>
+  <div class='col-sm-6'>
+    <ul class="nav nav-pills">
+      <% ['all'].each do |scope| %>
+        <li class="nav-item">
+          <% if scope == 'all' %>
+            <%= link_to scope.titleize, url_for(scope: nil), class: "nav-link #{params[:scope].nil? ? 'active' : ''}" %>
+          <% else %>
+            <%= link_to scope.titleize, url_for(scope: scope), class: "nav-link #{scope == params[:scope] ? 'active' : ''}" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class='col-sm-6 text-end'>
+    <%= link_to "Export to CSV", url_for(format: "csv"), class: "btn btn-outline-secondary" %>
+    <div class='d-inline-block'>
+      <%= render 'shared/search' %>
+    </div>
+  </div>
+</div>
+<%= render 'table', list_items: @list_items %>

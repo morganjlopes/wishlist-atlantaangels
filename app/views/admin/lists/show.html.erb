@@ -1,2 +1,6 @@
+<%= content_for :page_actions do %>
+  <%= render 'actions', list: @list, btn_classes: 'btn btn-outline-primary' %>
+<% end %>
+
 <%= render 'admin/lists/details', list: @list %>
 <%= render 'admin/list_items/table', list_items: @list.list_items %>

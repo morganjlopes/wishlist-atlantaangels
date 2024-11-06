@@ -29,6 +29,9 @@
               <%= link_to "Wishlists", admin_lists_path, class: "#{'active' if params[:controller] == 'admin/lists'} nav-link" %>
             </li>
             <li class='nav-item'>
+              <%= link_to "Wishlist Items", admin_list_items_path, class: "#{'active' if params[:controller] == 'admin/list_items'} nav-link" %>
+            </li>
+            <li class='nav-item'>
               <%= link_to "Sponsors", admin_sponsors_path, class: "#{'active' if params[:controller] == 'admin/sponsors'} nav-link" %>
             </li>
             <li class="nav-item dropdown">

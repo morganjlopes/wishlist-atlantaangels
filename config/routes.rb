@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     resources :ahoy_events, only: [:index], path: 'ahoy_events'
     resources :events
     resources :lists
+    resources :list_items
     resources :families
   end
 

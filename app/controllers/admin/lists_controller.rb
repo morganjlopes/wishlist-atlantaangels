@@ -53,6 +53,7 @@ class Admin::ListsController < Admin::BaseController
       :gender,
       :gift_card_store,
       :is_published,
+      :alias, 
       list_items_attributes: [
         :id,
         :name,

@@ -2,6 +2,8 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Wishlist (alias)</th>
+      <th>Family</th>
     </tr>
   </thead>
   <tbody>
@@ -9,6 +11,13 @@
       <tr>
         <td>
           <%= list_item.name %>
+        </td>
+        <td>
+          <%= link_to list_item&.list.name, admin_list_path(list_item.list) %>
+          (<%= list_item.list.alias %>)
+        </td>
+        <td>
+          <%= link_to list_item.list.family.name, admin_family_path(list_item.list.family) %>
         </td>
       </tr>
     <% end %>
