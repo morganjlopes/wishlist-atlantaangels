@@ -1,7 +1,7 @@
 class List < ApplicationRecord
   include PgSearch::Model
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :alias, use: :slugged
 
   belongs_to :family
   belongs_to :sponsor, optional: true
