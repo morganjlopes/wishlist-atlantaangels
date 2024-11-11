@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Alias</th>
       <th>Status</th>
       <th>Family</th>
       <th>Sponsor</th>
@@ -16,6 +17,9 @@
         <td>
           <%= list.name %>
           <div class='small'><%= format_date(list.created_at) %></div>
+        </td>
+        <td>
+          <%= list.alias %>
         </td>
         <td>
           <%= list.status %>

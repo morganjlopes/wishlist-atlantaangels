@@ -1,5 +1,5 @@
 class Admin::ListsController < Admin::BaseController
-  before_action :_set_list, only: [:show, :edit, :update, :destroy]
+  before_action :_set_list, only: [:show, :edit, :remove_sponsor, :update, :destroy]
 
   def index
     @page_title = "Wishlists"
@@ -24,6 +24,12 @@ class Admin::ListsController < Admin::BaseController
 
   def edit
     @page_title = 'Edit Wishlist'
+  end
+
+  def remove_sponsor
+    @list.remove_sponsor!
+
+    redirect_to admin_lists_path(), notice: "Sponsor removed successfully"
   end
 
   def update

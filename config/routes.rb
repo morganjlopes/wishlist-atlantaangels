@@ -40,7 +40,11 @@ Rails.application.routes.draw do
     resources :ahoy_visits, only: [:index], path: 'visits'
     resources :ahoy_events, only: [:index], path: 'ahoy_events'
     resources :events
-    resources :lists
+    resources :lists do
+      member do
+        put :remove_sponsor
+      end
+    end
     resources :list_items
     resources :families
   end

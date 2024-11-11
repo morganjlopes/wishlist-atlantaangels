@@ -26,6 +26,10 @@ class ListItem < ApplicationRecord
     list&.alias
   end
 
+  def sponsor_name
+    list&.sponsor&.full_name if list.sponsor.present?
+  end
+
   def self.to_csv
     attrs = [
       "id",
@@ -34,6 +38,7 @@ class ListItem < ApplicationRecord
       "family_name",
       "list_name",
       "list_alias",
+      "sponsor_name"
     ]
 
     CSV.generate do |csv|

@@ -46,10 +46,19 @@ class List < ApplicationRecord
     list_items.count
   end
 
+  def sponsor_name
+    sponsor&.full_name
+  end
+
+  def remove_sponsor!
+    update(sponsor_id: nil)
+  end
+
   def self.to_csv
     attrs = [
       "id",
       "name",
+      "alias",
       "event_name",
       "family_name",
       "age",
@@ -58,6 +67,7 @@ class List < ApplicationRecord
       "list_items_count",
       "created_at",
       "is_published",
+      "sponsor_name",
     ]
 
     CSV.generate do |csv|

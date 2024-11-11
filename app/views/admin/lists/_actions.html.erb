@@ -6,6 +6,7 @@
     <li><%= link_to 'Edit List', edit_admin_list_path(list), class: 'dropdown-item' %></li>
     <li><%= link_to 'View List', [:admin, list], class: 'dropdown-item' %></li>
     <li><hr class="dropdown-divider"></li>
+    <li><%= link_to 'Remove Sponsor', remove_sponsor_admin_list_path(list), method: :put, data: { confirm: 'Are you sure you want to remove the sponsor?' }, class: "text-danger dropdown-item #{'disabled text-muted' unless list.sponsor.present? }" %></li>
     <li><%= link_to 'Delete List', [:admin, list], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger dropdown-item' %></li>
   </ul>
 </div>
