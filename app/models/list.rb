@@ -23,6 +23,8 @@ class List < ApplicationRecord
 
   validates :name,            presence: true
   validates :age,             presence: true
+  
+  validate :_prevent_update_if_published
 
   before_save :_ensure_alias
 
@@ -84,6 +86,13 @@ class List < ApplicationRecord
 
     until self.alias.present? && List.where(alias: self.alias).empty?
       self.alias = SecureRandom.random_number(1_000..9_999).to_s
+    end
+  end
+
+  def _prevent_update_if_published
+    if is_published
+      errors.add(:base, "Cannot update a published list")
+      false
     end
   end
 end

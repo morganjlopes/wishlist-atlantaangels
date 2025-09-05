@@ -36,7 +36,7 @@ class Admin::ListsController < Admin::BaseController
     if @list.update(list_params)
       redirect_to edit_admin_list_path(@list), notice: "Wishlist updated successfully"
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

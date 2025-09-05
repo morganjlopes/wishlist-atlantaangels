@@ -4,7 +4,6 @@
       <th>Name</th>
       <th>Address</th>
       <th>Holiday</th>
-      <th>Attending</th>
       <th class='text-center'>Wishlists</th>
       <th></th>
     </tr>
@@ -20,12 +19,6 @@
         </td>
         <td>
           <%= family.holiday %>
-        </td>
-        <td>
-          <%= family.is_attending ? 'yes' : 'no' %><br>
-          <% if family.is_attending %>
-            <%= truncate(family.attendance_selection, length: 15) %>
-          <% end %>
         </td>
         <td class='text-center'>
           <%= link_to pluralize(family.lists.count, 'wishlists'), admin_lists_path(family_id: family), class: 'btn btn-sm btn-link' %>
