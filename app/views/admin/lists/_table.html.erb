@@ -25,10 +25,10 @@
           <%= list.status %>
         </td>
         <td>
-          <%= link_to list.family&.name, [:admin, list.family] %>
+          <%= link_to list.family&.name, [:admin, list.family], class: 'btn btn-sm btn-link' %>
         </td>
         <td>
-          <%= link_to list.sponsor&.full_name, [:admin, list.sponsor] if list.sponsor.present? %>
+          <%= link_to list.sponsor&.full_name, [:admin, list.sponsor], class: 'btn btn-sm btn-link' if list.sponsor.present? %>
         </td>
         <td class='text-center'>
           <%= list.age %>

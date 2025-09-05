@@ -87,6 +87,16 @@ table {
   border-radius: 500px;
 }
 
+.btn-link {
+  color: var(--bs-primary);
+  &:hover,
+  &:active,
+  &.active,
+  &:focus {
+    color: var(--bs-primary-dark);
+  }
+}
+
 .btn-primary {
   background-color: var(--bs-primary);
   border-color: var(--bs-primary);

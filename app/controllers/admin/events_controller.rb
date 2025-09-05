@@ -1,5 +1,5 @@
 class Admin::EventsController < Admin::BaseController
-  before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :set_event, only: %i[ show edit cheatsheet update destroy ]
 
   def index
     @page_title = "Events"
@@ -8,6 +8,11 @@ class Admin::EventsController < Admin::BaseController
 
   def show
     @page_title = @event.name
+    @association_name = params[:association].present? ? params[:association] : 'families'
+    @association      = @event.send(@association_name)
+  end
+
+  def cheatsheet
   end
 
   def new

@@ -1,0 +1,28 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th class='text-center'>Wishlists</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% sponsors.each do |sponsor| %>
+      <tr>
+        <td>
+          <%= sponsor.full_name %>
+        </td>
+        <td>
+          <%= sponsor.email %>
+        </td>
+        <td class='text-center'>
+          <%= sponsor.lists.count %>
+        </td>
+        <td class='text-end'>
+          <%= render 'admin/sponsors/actions', sponsor: sponsor %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

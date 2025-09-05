@@ -39,7 +39,11 @@ Rails.application.routes.draw do
     resources :users, only: [:index]
     resources :ahoy_visits, only: [:index], path: 'visits'
     resources :ahoy_events, only: [:index], path: 'ahoy_events'
-    resources :events
+    resources :events do
+      member do 
+        get :cheatsheet
+      end
+    end
     resources :lists do
       member do
         put :remove_sponsor

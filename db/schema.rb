@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_06_225502) do
+ActiveRecord::Schema[7.0].define(version: 2025_09_05_015442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -121,6 +121,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_06_225502) do
     t.string "slug"
     t.bigint "sponsor_id"
     t.datetime "sponsored_at"
+    t.string "qualification_criteria"
     t.index ["family_id"], name: "index_lists_on_family_id"
     t.index ["sponsor_id"], name: "index_lists_on_sponsor_id"
   end

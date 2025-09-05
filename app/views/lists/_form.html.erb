@@ -20,15 +20,15 @@
       </div>
 
       <div class='field'>
-        <%= f.input :age, input_html: { class: 'form-control' }, label: "Child's Age" %>
+        <%= f.input :age, collection: 0..24, input_html: { class: 'form-control' }, label: "Child's Age" %>
       </div>
 
       <div class='field'>
-        <%= f.input :gender, collection: ['male', 'female', 'nonbinary'], input_html: { class: 'form-control' }, label: "Child's Gender" %>
+        <%= f.input :gender, as: :radio_buttons, collection: ['male', 'female', 'nonbinary'], label: "Child's Gender" %>
       </div>
 
       <div class='field'>
-        <%= f.input :is_qualified, input_html: { class: 'form-control' }, collection: { 'Yes' => true, 'No' => false }, label: "Is child in foster care?" %>
+        <%= f.input :qualification_criteria, as: :radio_buttons, collection: ["Yes, this child is in foster care", "No, this child is adopted", "No, this child is my biological child"], label: "Is child in foster care?", include_blank: "Select an option" %>
       </div>
 
       <div class='field'>

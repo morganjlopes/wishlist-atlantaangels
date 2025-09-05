@@ -1,0 +1,24 @@
+
+<% @event.families.each do |family| %>
+  <section class='border-bottom mb-3 py-3'>
+    <h2 class='h4'><%= family.name %></h2>
+
+    <section class='ps-3'>
+      <% family.lists.each do |list| %>
+        <h3 class='h5'><%= list.name %> (alias: <%= list.alias %>)</h3>
+        <% if list.sponsor.present? %>
+          <p class=''>Sponsor: <%= list.sponsor&.full_name %></p>
+        <% end %>
+
+        <ul class='list-unstyled'>
+          <% list.list_items.each do |list_item| %>
+            <li>
+              <i class='fa fa-square-o'></i>
+              <%= list_item.name %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </section>
+  </section>
+<% end %>

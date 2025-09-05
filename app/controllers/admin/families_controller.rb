@@ -1,5 +1,5 @@
 class Admin::FamiliesController < Admin::BaseController
-  before_action :_set_family, only: [:show, :edit, :update]
+  before_action :_set_family, only: [:show, :edit, :update, :destroy]
 
   def index
     @page_title = "Families"
@@ -28,6 +28,13 @@ class Admin::FamiliesController < Admin::BaseController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @family.destroy
+
+    redirect_url = params[:redirect_url].present? ? params[:redirect_url] : admin_families_path
+    redirect_to redirect_url, notice: "Family deleted successfully"
   end
 
   private

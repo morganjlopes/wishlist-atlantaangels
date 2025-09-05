@@ -24,31 +24,29 @@
     <pre><%= event_lists_url(event) %></pre>
   </p>
 
+  <p>
+    <label>Families Count:</label>
+    <%= event.families.count %>
+  </p>
 
-  <h2>Families</h2>
+  <p>
+    <label>Sponsors Count:</label>
+    <%= event.sponsors.count %>
+  </p>
 
-  <table class='table'>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Wishlists</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% event.families.each do |family| %>
-        <tr>
-          <td>
-            <%= family.name %>
-          </td>
-          <td>
-            <%= family.email %>
-          </td>
-          <td>
-            <%= family.lists.count %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <p>
+    <label>Wishlists Count:</label>
+    <%= event.lists.count %>
+  </p>
+
+  <ul class="nav mb-3">
+    <% ['families', 'sponsors', 'lists'].each do |tab| %>
+      <li class="nav-item">
+        <%= link_to "#{tab.titleize} (#{event.send(tab).count})", url_for(association: tab), class: "nav-link #{tab == @association_name ? 'active' : ''}" %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= render "admin/#{@association_name}/table", @association_name.to_sym => @association %>
+
 </div>

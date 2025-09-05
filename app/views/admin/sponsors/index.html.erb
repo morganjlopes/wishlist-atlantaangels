@@ -20,31 +20,4 @@
   </div>
 </div>
 
-<table class='table'>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th class='text-center'>Wishlists</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @sponsors.each do |sponsor| %>
-      <tr>
-        <td>
-          <%= sponsor.full_name %>
-        </td>
-        <td>
-          <%= sponsor.email %>
-        </td>
-        <td class='text-center'>
-          <%= sponsor.lists.count %>
-        </td>
-        <td class='text-end'>
-          <%= link_to 'View', admin_sponsor_path(sponsor), class: 'btn btn-sm btn-outline-primary' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'table', sponsors: @sponsors %>

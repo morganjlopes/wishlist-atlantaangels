@@ -1,0 +1,13 @@
+<div class="dropdown">
+  <button class="<%= defined?(btn_classes) ? btn_classes : 'btn btn-outline-primary btn-sm' %> dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Actions
+  </button>
+  <ul class="dropdown-menu">
+    <li><%= link_to 'Edit Sponsor', edit_admin_sponsor_path(sponsor), class: 'dropdown-item' %></li>
+    <li><%= link_to 'View Sponsor', [:admin, sponsor], class: 'dropdown-item' %></li>
+    <% if false %>
+      <li><hr class="dropdown-divider"></li>
+      <li><%= link_to 'Delete Sponsor', admin_sponsor_path(sponsor, redirect_url: url_for()), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger dropdown-item' %></li>
+    <% end %>
+  </ul>
+</div>
