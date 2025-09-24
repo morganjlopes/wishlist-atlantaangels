@@ -28,6 +28,7 @@ gem 'devise'
 gem 'pg_search'
 gem "jquery-rails"
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'main'
+gem 'mailgun-ruby', '~>1.3.9'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

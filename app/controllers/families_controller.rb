@@ -22,6 +22,7 @@ class FamiliesController < ApplicationController
 
   def lists_complete
     if @family.update(lists_completed_at: Time.current)
+      FamilyMailer.confirmation_email(@family.id).deliver_now
       redirect_to confirmation_event_family_path(@family.event, @family), notice: "Your wishlists are complete."
     else
       redirect_to event_family_confirmation_path(@family.event, @family), alert: "There was an error."
